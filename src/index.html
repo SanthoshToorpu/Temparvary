@@ -1,0 +1,414 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <title>Mountain Retreat</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openIcon = document.getElementById('open-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        // Toggle mobile menu visibility
+        menuToggle.addEventListener('click', function () {
+            toggleMobileMenu();
+        });
+
+        // Function to toggle mobile menu visibility
+        function toggleMobileMenu() {
+            if (mobileMenu.style.transform === 'translateY(0%)') {
+                mobileMenu.style.transform = 'translateY(-100%)';
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            } else {
+                mobileMenu.style.transform = 'translateY(0%)';
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            }
+        }
+
+        // Close mobile menu if clicked outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickInsideToggle = menuToggle.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickInsideToggle && mobileMenu.style.transform === 'translateY(0%)') {
+                toggleMobileMenu();
+            }
+        });
+    });
+</script>
+
+
+
+
+  </head>
+<body>
+    
+<div class="flex flex-col min-h-[100dvh]">
+    <header class="bg-white border-b sticky top-0 z-10">
+        <div class="container px-4 sm:px-6 py-4 flex items-center justify-between">
+            <a class="flex items-center gap-2 text-lg font-bold" href="./index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                    <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+                </svg>
+                <span>Mountain Retreat</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-4">
+                <a class="text-muted-foreground hover:underline" href="#">Home</a>
+                <a class="text-muted-foreground hover:underline" href="#facilities">Facilities</a>
+                <a class="text-muted-foreground hover:underline" href="#rooms">Rooms</a>
+                <a class="text-muted-foreground hover:underline" href="#deals">Deals</a>
+                <a class="text-muted-foreground hover:underline" href="#footer">Contact Us</a>
+                <a class="text-muted-foreground hover:underline" href="./profile.html">Profile</a>
+            </nav>
+            <button id="menu-toggle" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 md:hidden" onclick="toggleMobileMenu()">
+                <svg id="open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+            
+        </div>
+    
+        <!-- Mobile Menu (hidden by default) -->
+        <nav id="mobile-menu" class="md:hidden bg-white absolute top-0 inset-x-0 z-20 transform -translate-y-full transition-transform duration-300">
+            <div class="container px-4 sm:px-6 py-2 flex flex-col items-center">
+                <a class="text-muted-foreground hover:underline my-2" href="#">Home</a>
+                <a class="text-muted-foreground hover:underline my-2" href="#facilities">Facilities</a>
+                <a class="text-muted-foreground hover:underline my-2" href="#rooms">Rooms</a>
+                <a class="text-muted-foreground hover:underline my-2" href="#deals">Deals</a>
+                <a class="text-muted-foreground hover:underline my-2" href="#footer">Contact Us</a>
+                <a class="text-muted-foreground hover:underline my-2" href="./profile.html">Profile</a>
+            </div>
+        </nav>
+    </header>
+    
+    
+    <section class="relative w-full h-screen bg-gray-900">
+      <img
+        src="../assets/hero.jpg"
+        width="1920"
+        height="1080"
+        alt="Hero"
+        class="absolute inset-0 w-full h-full object-cover opacity-50"
+        style="aspect-ratio: 1920 / 1080; object-fit: cover;"
+      />
+      <div class="relative z-10 h-full flex flex-col items-center justify-center px-4 md:px-6 text-center space-y-6">
+        <h1 class="text-3xl font-bold text-white sm:text-5xl md:text-6xl">Luxury Mountain Retreat</h1>
+        <p class="max-w-[600px] text-gray-300 md:text-xl">
+          Experience the ultimate in relaxation and rejuvenation at our stunning mountain resort, nestled amidst
+          breathtaking natural beauty.
+        </p>
+        <a
+          class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-950 disabled:pointer-events-none disabled:opacity-50 hover:bg-black"
+          href="./Bookings.html"
+          rel="ugc"
+        >
+          Book Now
+        </a>
+      </div>
+    </section>
+    <section id="facilities" class="w-full py-12 md:py-24 bg-gray-100 dark:bg-gray-800">
+      <div class="px-4 md:px-6">
+        <h1 class="text-4xl font-bold text-center gradient-text pb-8">Our Facilities</h1>
+        <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div class="flex flex-col items-center justify-center space-y-3 p-6 rounded-xl bg-white shadow-sm transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-10 h-10 text-primary"
+            >
+              <path d="M12 20h.01"></path>
+              <path d="M2 8.82a15 15 0 0 1 20 0"></path>
+              <path d="M5 12.859a10 10 0 0 1 14 0"></path>
+              <path d="M8.5 16.429a5 5 0 0 1 7 0"></path>
+            </svg>
+            <h3 class="text-xl font-semibold">Free WiFi</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-center">
+              Stay connected with high-speed internet access throughout the resort.
+            </p>
+          </div>
+          <div class="flex flex-col items-center justify-center space-y-3 p-6 rounded-xl bg-white shadow-sm transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-10 h-10 text-primary"
+            >
+              <path d="M5 9c-1.5 1.5-3 3.2-3 5.5A5.5 5.5 0 0 0 7.5 20c1.8 0 3-.5 4.5-2 1.5 1.5 2.7 2 4.5 2a5.5 5.5 0 0 0 5.5-5.5c0-2.3-1.5-4-3-5.5l-7-7-7 7Z"></path>
+              <path d="M12 18v4"></path>
+            </svg>
+            <h3 class="text-xl font-semibold">Luxury Spa</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-center">
+              Indulge in our world-class spa facilities for the ultimate pampering experience.
+            </p>
+          </div>
+          <div class="flex flex-col items-center justify-center space-y-3 p-6 rounded-xl bg-white shadow-sm transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-10 h-10 text-primary"
+            >
+              <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+            </svg>
+            <h3 class="text-xl font-semibold">Mountain Views</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-center">
+              Breathe in the fresh mountain air and enjoy stunning vistas from every angle.
+            </p>
+          </div>
+          <div class="flex flex-col items-center justify-center space-y-3 p-6 rounded-xl bg-white shadow-sm transition-colors hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-800">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-10 h-10 text-primary"
+            >
+              <path d="M12 3v18"></path>
+              <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+              <path d="M3 9h18"></path>
+              <path d="M3 15h18"></path>
+            </svg>
+            <h3 class="text-xl font-semibold">Gourmet Dining</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-center">
+              Savor delectable cuisine crafted by our award-winning chefs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="rooms" class="w-[80%] mx-auto lg:py-32">
+      <div class="">
+        <h1 class="text-4xl font-bold text-center gradient-text pb-8">Our Rooms</h1>
+        <div class="grid gap-6">
+          <div class="flex flex-col md:flex-row  items-center bg-white rounded-xl shadow-sm overflow-hidden">
+            <img
+              src="../assets/deluxe.jpg"
+              width="550"
+              height="310"
+              alt="Room"
+              class="md:w-1/2 aspect-video object-cover"
+            />
+            <div class="p-6 md:p-8 space-y-3">
+              <h3 class="text-2xl font-semibold">Deluxe Room</h3>
+              <p class="text-gray-500 dark:text-gray-400">
+                Luxurious accommodations with stunning mountain views, plush bedding, and modern amenities.
+              </p>
+              <a
+                class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-black shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-950 disabled:pointer-events-none disabled:opacity-50"
+                href="./Bookings.html"
+                rel="ugc"
+              >
+                Book Now
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-sm overflow-hidden">
+            <img
+              src="../assets/suite.jpg"
+              width="550"
+              height="310"
+              alt="Room"
+              class="md:w-1/2 aspect-video object-cover"
+            />
+            <div class="p-6 md:p-8 space-y-3">
+              <h3 class="text-2xl font-semibold">Suite</h3>
+              <p class="text-gray-500 dark:text-gray-400">
+                Spacious and luxurious suites with separate living areas, private balconies, and premium amenities.
+              </p>
+              <a
+                class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-black shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-950 disabled:pointer-events-none disabled:opacity-50"
+                href="./Bookings.html"
+                rel="ugc"
+              >
+                Book Now
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row  items-center bg-white rounded-xl shadow-sm overflow-hidden">
+            <img
+              src="../assets/famsuite.jpg"
+              width="550"
+              height="310"
+              alt="Room"
+              class="md:w-1/2 aspect-video object-cover"
+            />
+            <div class="p-6 md:p-8 space-y-3">
+              <h3 class="text-2xl font-semibold">Family Suite</h3>
+              <p class="text-gray-500 dark:text-gray-400">
+                Exceptional family room with stunning mountain views, plush bedding, and modern amenities.
+              </p>
+              <a
+                class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-black shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-950 disabled:pointer-events-none disabled:opacity-50"
+                href="./Bookings.html"
+                rel="ugc"
+              >
+                Book Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="deals" class="w-full pt-12 bg-gray-100" >
+        <div class="container px-4 md:px-6">
+          <div class="flex flex-col items-center justify-center space-y-4 text-center">
+            <div class="space-y-2">
+              <div class="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Special Offers</div>
+              <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Exclusive Deals and Packages</h2>
+              <p class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Take advantage of our limited-time offers and packages to make your stay even more memorable.
+              </p>
+            </div>
+          </div>
+          <div class="mx-auto grid max-w-5xl px-8 border rounded-3xl my-10 items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12 bg-white">
+            <img
+              src="../assets/romatic_getaway.jpg"
+              alt="Offer"
+              width="550"
+              height="310"
+              style=""
+              class="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+            />
+            <div class="flex flex-col justify-center space-y-4">
+              <div class="grid gap-1">
+                <h3 class="text-xl font-bold">Romantic Getaway</h3>
+                <p class="text-muted-foreground">
+                  Indulge in a romantic weekend escape with your loved one. Includes a bottle of wine, rose petals,
+                  and a couples massage.
+                </p>
+                <div class="flex items-center gap-2 text-sm font-medium">
+                  <span>$500 / 2 nights</span>
+                  <a
+                    href="#"
+                    class="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mx-auto grid max-w-5xl px-8 border rounded-3xl my-10 bg-white items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
+            <img
+              src="../assets/family_trip.jpg"
+              alt="Offer"
+              class="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+              width="550"
+              height="310"
+            />
+            <div class="flex flex-col justify-center space-y-4">
+              <div class="grid gap-1">
+                <h3 class="text-xl font-bold">Family Adventure</h3>
+                <p class="text-muted-foreground">
+                  Bring the whole family for a fun-filled mountain adventure. Includes access to our on-site
+                  activities and a special family-style dinner.
+                </p>
+                <div class="flex items-center gap-2 text-sm font-medium">
+                  <span>$800 / 3 nights</span>
+                  <a
+                    href="#"
+                    class="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <footer id="footer" class="w-full bg-gray-900 text-white">
+      <div class="container px-4 md:px-6 py-8 md:py-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="space-y-3">
+          <h4 class="text-lg font-semibold">Contact</h4>
+          <div class="flex flex-col space-y-1">
+            <p>123 Mountain Road, Somewhere, CA 12345</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>Email: info@mountainretreat.com</p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="text-lg font-semibold">Quick Links</h4>
+          <div class="flex flex-col space-y-1">
+            <a class="hover:underline" href="#" rel="ugc">
+              About
+            </a>
+            <a class="hover:underline" href="#" rel="ugc">
+              Rooms
+            </a>
+            <a class="hover:underline" href="#" rel="ugc">
+              Amenities
+            </a>
+            <a class="hover:underline" href="#" rel="ugc">
+              Contact
+            </a>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="text-lg font-semibold">Follow Us</h4>
+          <div class="flex space-x-3">
+            <a class="hover:underline" href="#" rel="ugc">
+              Facebook
+            </a>
+            <a class="hover:underline" href="#" rel="ugc">
+              Twitter
+            </a>
+            <a class="hover:underline" href="#" rel="ugc">
+              Instagram
+            </a>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="text-lg font-semibold">Newsletter</h4>
+          <p>Subscribe to our newsletter to stay up-to-date on our latest offers and promotions.</p>
+          <form class="flex gap-2">
+            <input
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1"
+              placeholder="Enter your email"
+              type="email"
+            />
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+              type="submit"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="w-full bg-gray-800 py-4 text-center text-sm">© 2024 Mountain Retreat. All rights reserved.</div>
+    </footer>
+  </div>
+</body>
+</html>
